@@ -4,10 +4,7 @@ import br.com.cantaruttim.model.Person;
 import br.com.cantaruttim.service.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,9 +38,8 @@ public class PersonController {
             consumes = MediaType.APPLICATION_JSON_VALUE, // consome
             produces = MediaType.APPLICATION_JSON_VALUE // produz
     )
-    public Person create(
-            Person person
-    ) {
+    // possibilita pegar o corpo e armazenar o dado
+    public Person create(@RequestBody Person person) {
         return service.create(person);
     }
 
