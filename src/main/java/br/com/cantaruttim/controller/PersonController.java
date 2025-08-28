@@ -38,7 +38,8 @@ public class PersonController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE
+            consumes = MediaType.APPLICATION_JSON_VALUE, // consome
+            produces = MediaType.APPLICATION_JSON_VALUE // produz
     )
     public Person create(
             Person person
