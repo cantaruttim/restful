@@ -61,5 +61,17 @@ public class PersonServices {
         return person;
     }
 
+    public void delete(String id) {
+        logger.info("Deleting One Person!");
+
+    }
+
+    public Person update(Person person) {
+        logger.info("Updating One Person!");
+
+
+
+        return person;
+    }
 
 }
