@@ -1,1 +1,17 @@
-spring.application.name=projectUm
+spring:
+  application:
+    name: projectUm
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/projectUm
+    username: postgres   # ou root, se for esse mesmo
+    password: 12102021
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
