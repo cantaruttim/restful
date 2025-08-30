@@ -1,11 +1,8 @@
 spring:
-  application:
-    name: projectUm
-
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/projectUm
-    username: postgres   # ou root, se for esse mesmo
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/projectum?useSSL=false&serverTimezone=UTC
+    username: root
     password: 12102021
 
   jpa:
@@ -13,5 +10,5 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: false
