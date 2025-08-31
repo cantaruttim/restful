@@ -36,18 +36,18 @@ public class PersonController {
             produces = MediaType.APPLICATION_JSON_VALUE // produz
     )
     // possibilita pegar o corpo e armazenar o dado
-    public PersonDTO create(@RequestBody PersonDTO PersonDTO) {
-        return service.create(PersonDTO);
+    public PersonDTO create(@RequestBody PersonDTO person) {
+        return service.create(person);
     }
 
     @PostMapping(
-            name = "/v2",
+            value = "/v2",
             consumes = MediaType.APPLICATION_JSON_VALUE, // consome
             produces = MediaType.APPLICATION_JSON_VALUE // produz
     )
-    // possibilita pegar o corpo e armazenar o dado
-    public PersonDTOv2 createv2(@RequestBody PersonDTOV2 person) {
-        return service.create(person);
+
+    public PersonDTOv2 create(@RequestBody PersonDTOv2 person) {
+        return service.createv2(person);
     }
 
     @PutMapping(

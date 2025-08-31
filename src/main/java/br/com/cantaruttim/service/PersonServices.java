@@ -5,6 +5,8 @@ import br.com.cantaruttim.data.v2.PersonDTOv2;
 import br.com.cantaruttim.exception.ResourceNotFoundException;
 import static br.com.cantaruttim.mapper.ObjectMapper.parseListObject;
 import static br.com.cantaruttim.mapper.ObjectMapper.parseObject;
+
+import br.com.cantaruttim.mapper.custom.PersonMapper;
 import br.com.cantaruttim.model.Person;
 import br.com.cantaruttim.repository.PersonRepository;
 import org.slf4j.LoggerFactory;
@@ -26,6 +28,9 @@ public class PersonServices {
 
     @Autowired
     PersonRepository repository;
+
+    @Autowired
+    PersonMapper converter;
 
 
     public List<PersonDTO> findAll() {
@@ -58,9 +63,9 @@ public class PersonServices {
     }
 
     public PersonDTOv2 createv2(PersonDTOv2 person) {
-        logger.info("Creating One Person!");
-        var entity = parseObject(person, Person.class);
-        return parseObject(repository.save(entity), PersonDTO.class);
+        logger.info("Creating One Person V2!");
+        var entity = converter.convertDTOtoEntity(person);
+        return converter.convertEntityToDTO(repository.save(entity));
     }
 
     public void delete(Long id) {
