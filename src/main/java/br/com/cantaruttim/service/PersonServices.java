@@ -1,6 +1,7 @@
 package br.com.cantaruttim.service;
 
-import br.com.cantaruttim.data.dto.PersonDTO;
+import br.com.cantaruttim.data.v1.PersonDTO;
+import br.com.cantaruttim.data.v2.PersonDTOv2;
 import br.com.cantaruttim.exception.ResourceNotFoundException;
 import static br.com.cantaruttim.mapper.ObjectMapper.parseListObject;
 import static br.com.cantaruttim.mapper.ObjectMapper.parseObject;
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 @Service
@@ -52,6 +52,12 @@ public class PersonServices {
     }
 
     public PersonDTO create(PersonDTO person) {
+        logger.info("Creating One Person!");
+        var entity = parseObject(person, Person.class);
+        return parseObject(repository.save(entity), PersonDTO.class);
+    }
+
+    public PersonDTOv2 createv2(PersonDTOv2 person) {
         logger.info("Creating One Person!");
         var entity = parseObject(person, Person.class);
         return parseObject(repository.save(entity), PersonDTO.class);

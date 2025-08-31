@@ -1,6 +1,7 @@
 package br.com.cantaruttim.controller;
 
-import br.com.cantaruttim.data.dto.PersonDTO;
+import br.com.cantaruttim.data.v1.PersonDTO;
+import br.com.cantaruttim.data.v2.PersonDTOv2;
 import br.com.cantaruttim.service.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -37,6 +38,16 @@ public class PersonController {
     // possibilita pegar o corpo e armazenar o dado
     public PersonDTO create(@RequestBody PersonDTO PersonDTO) {
         return service.create(PersonDTO);
+    }
+
+    @PostMapping(
+            name = "/v2",
+            consumes = MediaType.APPLICATION_JSON_VALUE, // consome
+            produces = MediaType.APPLICATION_JSON_VALUE // produz
+    )
+    // possibilita pegar o corpo e armazenar o dado
+    public PersonDTOv2 createv2(@RequestBody PersonDTOV2 person) {
+        return service.create(person);
     }
 
     @PutMapping(
