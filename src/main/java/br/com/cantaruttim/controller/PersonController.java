@@ -4,6 +4,7 @@ import br.com.cantaruttim.model.Person;
 import br.com.cantaruttim.service.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,10 @@ public class PersonController {
         return service.findAll();
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(
+            value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
     public Person findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
@@ -46,8 +50,9 @@ public class PersonController {
 
 
     @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable("id") Long id) {
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

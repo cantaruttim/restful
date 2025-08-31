@@ -3,12 +3,15 @@ package br.com.cantaruttim.service;
 import br.com.cantaruttim.exception.ResourceNotFoundException;
 import br.com.cantaruttim.model.Person;
 import br.com.cantaruttim.repository.PersonRepository;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @Service
 public class PersonServices {
@@ -16,7 +19,7 @@ public class PersonServices {
     // operacoes para cadastrar uma pessoa
 
     private final AtomicLong counter = new AtomicLong();
-    private final Logger logger = Logger.getLogger(PersonServices.class.getName());
+    private final Logger logger = LoggerFactory.getLogger(PersonServices.class.getName());
 
     @Autowired
     PersonRepository repository;
