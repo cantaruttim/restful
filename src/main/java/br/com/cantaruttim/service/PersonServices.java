@@ -1,6 +1,9 @@
 package br.com.cantaruttim.service;
 
+import br.com.cantaruttim.data.dto.PersonDTO;
 import br.com.cantaruttim.exception.ResourceNotFoundException;
+import static br.com.cantaruttim.mapper.ObjectMapper.parseListObject;
+import static br.com.cantaruttim.mapper.ObjectMapper.parseObject;
 import br.com.cantaruttim.model.Person;
 import br.com.cantaruttim.repository.PersonRepository;
 import org.slf4j.LoggerFactory;
@@ -25,27 +28,33 @@ public class PersonServices {
     PersonRepository repository;
 
 
-    public List<Person> findAll() {
+    public List<PersonDTO> findAll() {
         logger.info("Finding all People!");
-        return repository.findAll();
+        return parseListObject(
+                repository.findAll(),
+                PersonDTO.class
+        );
     }
 
 
-    public Person findById(Long id) {
+    public PersonDTO findById(Long id) {
         logger.info("Finding One Person!");
 
-        return repository.findById(id)
+        var entity = repository.findById(id)
                 .orElseThrow(
                         // lambda funtion
                         () -> new ResourceNotFoundException(
                                 "No records found for this ID"
                         )
                 );
+        return parseObject(entity, PersonDTO.class);
+
     }
 
-    public Person create(Person person) {
+    public PersonDTO create(PersonDTO person) {
         logger.info("Creating One Person!");
-        return repository.save(person);
+        var entity = parseObject(person, Person.class);
+        return parseObject(repository.save(entity), PersonDTO.class);
     }
 
     public void delete(Long id) {
@@ -61,7 +70,7 @@ public class PersonServices {
         repository.delete(entity);
     }
 
-    public Person update(Person person) {
+    public PersonDTO update(PersonDTO person) {
         logger.info("Updating One Person!");
 
         Person entity = repository
@@ -78,8 +87,7 @@ public class PersonServices {
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
 
-        // nao deve ser entity?
-        return repository.save(entity);
+        return parseObject(repository.save(entity), PersonDTO.class);
     }
 
 }

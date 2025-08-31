@@ -14,6 +14,10 @@ public class TestLogController {
     @GetMapping("/test")
     public String testLog() {
 
+        logger.debug("This is a BEGUG log");
+        logger.info("This is a INFO log");
+        logger.warn("This is a WARN log");
+        logger.error("This is a ERROR log");
 
         return "Logs generated successfully!";
     }

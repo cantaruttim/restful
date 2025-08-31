@@ -1,6 +1,6 @@
 package br.com.cantaruttim.controller;
 
-import br.com.cantaruttim.model.Person;
+import br.com.cantaruttim.data.dto.PersonDTO;
 import br.com.cantaruttim.service.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -13,12 +13,12 @@ import java.util.List;
 @RequestMapping("/person")
 public class PersonController {
 
-    //private PersonServices service = new PersonServices()
+    //private PersonDTOServices service = new PersonDTOServices()
     @Autowired
     private PersonServices service;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> findAll() {
+    public List<PersonDTO> findAll() {
         return service.findAll();
     }
 
@@ -26,7 +26,7 @@ public class PersonController {
             value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person findById(@PathVariable("id") Long id) {
+    public PersonDTO findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
@@ -35,8 +35,8 @@ public class PersonController {
             produces = MediaType.APPLICATION_JSON_VALUE // produz
     )
     // possibilita pegar o corpo e armazenar o dado
-    public Person create(@RequestBody Person person) {
-        return service.create(person);
+    public PersonDTO create(@RequestBody PersonDTO PersonDTO) {
+        return service.create(PersonDTO);
     }
 
     @PutMapping(
@@ -44,8 +44,8 @@ public class PersonController {
             produces = MediaType.APPLICATION_JSON_VALUE // produz
     )
     // possibilita pegar o corpo e armazenar o dado
-    public Person update(@RequestBody Person person) {
-        return service.update(person);
+    public PersonDTO update(@RequestBody PersonDTO PersonDTO) {
+        return service.update(PersonDTO);
     }
 
 

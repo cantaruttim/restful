@@ -13,7 +13,7 @@ spring:
     show-sql: false
     open-in-view: false
 
-logging:
-  level:
-    br.com.cantaruttim: DEBUG
+#logging:
+#  level:
+    #br.com.cantaruttim: DEBUG
 

@@ -18,6 +18,7 @@
 
     <properties>
         <java.version>21</java.version>
+        <dozer.version>7.0.0</dozer.version>
     </properties>
 
     <!-- Repositórios -->
@@ -74,6 +75,13 @@
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
             <version>3.1.0</version>
+        </dependency>
+
+        <!-- Dozer -->
+        <dependency>
+            <groupId>com.github.dozermapper</groupId>
+            <artifactId>dozer-core</artifactId>
+            <version>${dozer}</version>
         </dependency>
 
     </dependencies>
