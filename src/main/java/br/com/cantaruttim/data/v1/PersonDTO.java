@@ -1,5 +1,6 @@
 package br.com.cantaruttim.data.v1;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -20,6 +21,8 @@ public class PersonDTO implements Serializable {
     @JsonProperty("last_name")
     private String lastName;
     private String address;
+
+    @JsonIgnore
     private String gender;
 
     public PersonDTO() {}
