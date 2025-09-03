@@ -31,6 +31,16 @@ public class PersonController {
         return service.findById(id);
     }
 
+//    @GetMapping(
+//            value = "/{id}",
+//            produces = MediaType.APPLICATION_JSON_VALUE
+//    )
+//    public PersonDTO findById(@PathVariable("id") Long id) {
+//        var person =  service.findById(id);
+//        person.setBirthDay(new Date());
+//        return person;
+//    }
+
     @PostMapping(
             consumes = MediaType.APPLICATION_JSON_VALUE, // consome
             produces = MediaType.APPLICATION_JSON_VALUE // produz
